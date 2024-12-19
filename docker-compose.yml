@@ -7,10 +7,13 @@ services:
     environment:
       - http_proxy
       - https_proxy
-      - MEILI_MASTER_KEY=aSampleMasterKey
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-masterKey}
       - MEILI_DB_PATH=${MEILI_DB_PATH:-/data.ms}
+      #- MEILI_DUMP_DIR=${MEILI_DUMP_DIR:-/dumps}
+      #- MEILI_IMPORT_DUMP=${MEILI_DUMP_DIR:-/dumps}
     ports:
       - "7700:7700"
     volumes:
       - ./meilisearch_data:/data.ms
+      #- ./meilisearch_dump:/dumps
     restart: always
